@@ -1,6 +1,8 @@
 # overance-assignment
+## additional assignment information
 
-This template should help get you started developing with Vue 3 in Vite.
+1. Vowel count is case insensitive.
+2. Search is case sensitive, for example: `'Aaa' !== 'aaa`.
 
 ## Recommended IDE Setup
 

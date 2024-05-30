@@ -53,7 +53,7 @@ describe('Form', () => {
     expect(numberOfVowels).toBe(3)
   })
 
-  it('adds a green background to the search input field when it matches an input field', async () => {
+  it('adds green background to an input field when input field contains search text', async () => {
     const wrapper = mount(Form, globalConfig)
     const toolbar = wrapper.find('.p-toolbar')
     const searchInput = toolbar.find('.p-inputtext')
@@ -61,6 +61,19 @@ describe('Form', () => {
     const inputField = inputFields[0].find('.p-inputtext')
     await searchInput.setValue('match')
     await inputField.setValue('MAtchmatch')
+    await wrapper.vm.$nextTick()
+    expect(toolbar.element.classList.contains('bg-green')).toBe(false)
+    expect(inputFields[0].element.classList.contains('bg-green')).toBe(true)
+  })
+
+  it('adds green background to an input field and search field when input field matches search text', async () => {
+    const wrapper = mount(Form, globalConfig)
+    const toolbar = wrapper.find('.p-toolbar')
+    const searchInput = toolbar.find('.p-inputtext')
+    const inputFields = wrapper.findAll('.p-card')
+    const inputField = inputFields[0].find('.p-inputtext')
+    await searchInput.setValue('match')
+    await inputField.setValue('match')
     await wrapper.vm.$nextTick()
     expect(toolbar.element.classList.contains('bg-green')).toBe(true)
     expect(inputFields[0].element.classList.contains('bg-green')).toBe(true)
