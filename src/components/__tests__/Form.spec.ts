@@ -60,7 +60,7 @@ describe('Form', () => {
     const inputFields = wrapper.findAll('.p-card')
     const inputField = inputFields[0].find('.p-inputtext')
     await searchInput.setValue('match')
-    await inputField.setValue('match')
+    await inputField.setValue('MAtchmatch')
     await wrapper.vm.$nextTick()
     expect(toolbar.element.classList.contains('bg-green')).toBe(true)
     expect(inputFields[0].element.classList.contains('bg-green')).toBe(true)

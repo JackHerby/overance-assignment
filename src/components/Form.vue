@@ -10,7 +10,8 @@ const searchInput = ref('')
 
 const getSearchInputBackground = computed(() =>
   inputFieldContainer.value.some(
-    inputField => !!searchInput.value && inputField === searchInput.value
+    inputField =>
+      !!searchInput.value && inputField.toLowerCase().includes(searchInput.value.toLowerCase())
   )
 )
 
@@ -33,7 +34,7 @@ const getNumberOfVowels = (text: string): number => {
 }
 
 const getInputFieldBackground = (text: string): boolean => {
-  return !!searchInput.value && text === searchInput.value
+  return !!searchInput.value && text.toLowerCase().includes(searchInput.value.toLowerCase())
 }
 </script>
 
