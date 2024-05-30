@@ -2,7 +2,7 @@
 ## additional assignment information
 
 1. Vowel count is case insensitive.
-2. Search is case sensitive, for example: `'Aaa' !== 'aaa`.
+2. Search is case sensitive, for example: `'Aaa' !== 'aaa'`.
 
 ## Recommended IDE Setup
 
