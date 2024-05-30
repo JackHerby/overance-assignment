@@ -1,8 +1,9 @@
 @import './base.css';
 
 #app {
-  margin: 0 auto;
+  margin: 0;
   font-weight: normal;
+    width: 100%;
 }
 
 a,

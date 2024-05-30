@@ -9,7 +9,9 @@ import Button from 'primevue/button'
 const searchInput = ref('')
 
 const getSearchInputBackground = computed(() =>
-  inputFieldContainer.value.some(inputField => !!searchInput.value && inputField === searchInput.value)
+  inputFieldContainer.value.some(
+    inputField => !!searchInput.value && inputField === searchInput.value
+  )
 )
 
 const inputFieldContainer = ref<string[]>(['', '', ''])
@@ -36,7 +38,7 @@ const getInputFieldBackground = (text: string): boolean => {
 </script>
 
 <template>
-  <header class="w-full">
+  <header>
     <Toolbar :class="{ 'bg-green': getSearchInputBackground }">
       <template #center>
         <IconField iconPosition="left">
@@ -48,30 +50,52 @@ const getInputFieldBackground = (text: string): boolean => {
       </template>
     </Toolbar>
   </header>
-  <main class="card flex flex-column gap-3">
+  <main class="container">
     <Card
       v-for="(text, index) in inputFieldContainer"
       :key="index"
       :class="{ 'bg-green': getInputFieldBackground(text) }"
+      pt:content:style="display: flex; align-items: center;"
     >
-      <template #header>
-        <InlineMessage severity="contrast"
-          >Number of vowels: {{ getNumberOfVowels(text) }}</InlineMessage
-        >
-      </template>
       <template #content>
-        <InputText placeholder="type something in... " v-model="inputFieldContainer[index]"/>
+        <InputText placeholder="type something in... " v-model="inputFieldContainer[index]" />
+        <InlineMessage severity="secondary">vowels: {{ getNumberOfVowels(text) }}</InlineMessage>
       </template>
       <template #footer>
         <Button @click="deleteInputField(index)">Delete field</Button>
       </template>
     </Card>
-    <Button @click="addInputField">Add field</Button>
+    <Button class="add-button" @click="addInputField">Add field</Button>
   </main>
 </template>
 
 <style scoped>
 .bg-green {
-  background: green;
+  background: var(--green-600) !important;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  gap: 2rem;
+}
+
+.p-toolbar {
+  background: var(--bluegray-700);
+  margin-bottom: 2rem;
+}
+
+.p-card {
+  background: var(--bluegray-700);
+}
+
+.p-inputtext {
+  margin-right: 1rem;
+}
+
+.add-button {
+  margin-bottom: 3rem;
 }
 </style>
